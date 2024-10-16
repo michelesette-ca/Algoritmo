@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 string path = "C:\\Users\\msette\\Desktop\\Rubrica.csv";
 
@@ -12,28 +13,28 @@ void Program()
 {
 
 
-    //tempo   
+    //Bubble Sort 
     Stopwatch stopWatch = new Stopwatch();
     stopWatch.Start();
     BubbleSort(arrayContacts);
     stopWatch.Stop();
-    TimeSpan ts = stopWatch.Elapsed;
+    TimeSpan tempoBubble = stopWatch.Elapsed;
     
 
 
 
-    Console.WriteLine("Tempo del Bubble Sort: " + stopWatch);
+    Console.WriteLine("Tempo del Bubble Sort: " + tempoBubble);
 
 
 
-    //Selection sort
+    //Selection Sort
 
     stopWatch.Restart();
     SelectionSort(arrayContacts);
     stopWatch.Stop();
-    ts = stopWatch.Elapsed;
+    TimeSpan tempoSelection = stopWatch.Elapsed;
 
-    Console.WriteLine("Tempo del Selection Sort " + stopWatch);
+    Console.WriteLine("Tempo del Selection Sort " + tempoSelection);
 
 
     //Insertion Sort
@@ -41,29 +42,28 @@ void Program()
     stopWatch.Restart();
     InsertionSort(arrayContacts);
     stopWatch.Stop();
-    ts = stopWatch.Elapsed;
+    TimeSpan tempoInsertion = stopWatch.Elapsed;
 
 
-    Console.WriteLine("Tempo del Insertion Sort " + stopWatch);
+    Console.WriteLine("Tempo del Insertion Sort " + tempoInsertion);
 
 
     //Merge Sort
     stopWatch.Start();
     MergeSort(arrayContacts, 0, arrayContacts.Length - 1);
     stopWatch.Stop();
-    ts = stopWatch.Elapsed;
+    TimeSpan tempoMerge = stopWatch.Elapsed;
 
-    Console.WriteLine("Tempo del Merge Sort " + stopWatch);
+    Console.WriteLine("Tempo del Merge Sort " + tempoMerge);
 
+    
     //stampa elementi ordinati
+    //Console.WriteLine("\nArray ordinato:");
 
-    Console.WriteLine("\nArray ordinato:");
-    Console.WriteLine(arrayContacts.ToString());
-
-    foreach (var item in arrayContacts)
-    {
-        Console.WriteLine(item);
-    }
+    //foreach (var item in arrayContacts)
+    //{
+    //    Console.WriteLine(item);
+    //}
 
 }
 
