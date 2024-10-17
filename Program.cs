@@ -2,6 +2,7 @@
 using System.Diagnostics;
 
 string path = "C:\\Users\\msette\\Desktop\\Rubrica.csv";
+string newPath = "C:\\Users\\msette\\Desktop\\RubricaOrdinata.csv";
 
 string contacts = File.ReadAllText(path);
 string[] arrayContacts = contacts.Split('\n');
@@ -19,7 +20,7 @@ void Program()
     BubbleSort(arrayContacts);
     stopWatch.Stop();
     TimeSpan tempoBubble = stopWatch.Elapsed;
-    
+
 
 
 
@@ -56,14 +57,32 @@ void Program()
 
     Console.WriteLine("Tempo del Merge Sort " + tempoMerge);
 
-    
+
+    //calcolo del miglior tempo
+
+    TimeSpan[] time = { tempoBubble, tempoSelection, tempoInsertion, tempoMerge };
+    string[] name = { "Bubble Sort", "Selection Sort", "Insertion sort", "Merge Sort" };
+
+    int indiceMinimo = 0;
+    for (int i = 1; i < time.Length; i++)
+    {
+        if (time[i] < time[indiceMinimo])
+        {
+            indiceMinimo = i;
+        }
+    }
+    Console.WriteLine("Rubrica ordinata creata con successo in un nuovo file");
+    File.WriteAllText(newPath, String.Join('\n', arrayContacts));
+    Console.WriteLine($"\nL'algoritmo di Benchmark migliore è stato: {name[indiceMinimo]} con un tempo di {time[indiceMinimo]}");
+
     //stampa elementi ordinati
     //Console.WriteLine("\nArray ordinato:");
 
     //foreach (var item in arrayContacts)
     //{
-    //    Console.WriteLine(item);
+    //    File.WriteAllLines(newPath, item);
     //}
+
 
 }
 
@@ -219,3 +238,4 @@ static void Merge(string[] array, int inizio, int mezzo, int fine)
         k++;
     }
 }
+
