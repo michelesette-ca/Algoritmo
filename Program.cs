@@ -6,13 +6,15 @@ string newPath = "C:\\Users\\msette\\Desktop\\RubricaOrdinata.csv";
 
 string contacts = File.ReadAllText(path);
 string[] arrayContacts = contacts.Split('\n');
+string[] rubrica = contacts.Split('\n');
+string[] contatti = contacts.Split('\n');
+string[] numeri = contacts.Split('\n');
 
 
 Program();
 
 void Program()
 {
-
 
     //Bubble Sort 
     Stopwatch stopWatch = new Stopwatch();
@@ -31,7 +33,7 @@ void Program()
     //Selection Sort
 
     stopWatch.Restart();
-    SelectionSort(arrayContacts);
+    SelectionSort(rubrica);
     stopWatch.Stop();
     TimeSpan tempoSelection = stopWatch.Elapsed;
 
@@ -41,7 +43,7 @@ void Program()
     //Insertion Sort
 
     stopWatch.Restart();
-    InsertionSort(arrayContacts);
+    InsertionSort(contatti);
     stopWatch.Stop();
     TimeSpan tempoInsertion = stopWatch.Elapsed;
 
@@ -50,8 +52,8 @@ void Program()
 
 
     //Merge Sort
-    stopWatch.Start();
-    MergeSort(arrayContacts, 0, arrayContacts.Length - 1);
+    stopWatch.Restart();
+    MergeSort(numeri, 0, numeri.Length - 1);
     stopWatch.Stop();
     TimeSpan tempoMerge = stopWatch.Elapsed;
 
